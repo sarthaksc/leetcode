@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<string> removeAnagrams(vector<string>& words) {
+        vector<string> res;
+        unordered_set<string> s;
+        int n=words.size();
+        int start=0;
+        string curr=words[start];
+        sort(curr.begin(),curr.end());
+        res.push_back(words[start]);
+        for(int i=1;i<n;i++){
+            string next=words[i];
+            sort(next.begin(),next.end());
+            if(curr!=next){
+                start=i;
+                res.push_back(words[start]);
+                curr=next;
+            }
+        }
+        return res;
+    }
+};
