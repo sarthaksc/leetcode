@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int findSmallestInteger(vector<int>& nums, int value) {
+        // priority_queue<int, vector<int>, greater<int>> pq;
+        vector<int> rem(value,0);
+        for(int i:nums){
+            int remainder=abs(i)%value;
+            if(remainder!=0 && i<0){
+                remainder=value-remainder;
+            }
+            rem[remainder]++;
+        }
+        int lowest_rem=value;
+        int lowest_freq=INT_MAX;
+        for(int i=0;i<rem.size();i++){
+            if(rem[i]<lowest_freq){
+                lowest_freq=rem[i];
+                lowest_rem=i;
+            }
+        }
+        return (value*lowest_freq)+lowest_rem;
+    }
+};
