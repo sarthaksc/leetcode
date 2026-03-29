@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool canBeEqual(string s1, string s2) {
+        vector<char> s1_a;
+        vector<char> s1_b;
+        vector<char> s2_a;
+        vector<char> s2_b;
+        int n=s1.size();
+        int m=s2.size();
+        if(n!=m) return false;
+        for(int i=1;i<n;i+=2){
+            s1_a.push_back(s1[i-1]);
+            s1_b.push_back(s1[i]);
+            s2_a.push_back(s2[i-1]);
+            s2_b.push_back(s2[i]);
+        }
+        sort(s1_a.begin(),s1_a.end());
+        sort(s1_b.begin(),s1_b.end());
+        sort(s2_a.begin(),s2_a.end());
+        sort(s2_b.begin(),s2_b.end());
+
+        return (s1_a==s2_a) && (s1_b==s2_b);
+
+    }
+};
